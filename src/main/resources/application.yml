@@ -5,7 +5,7 @@ spring:
       path: /h2-console
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.0.0.35/mission?characterEncoding=UTF-8
+    url: jdbc:mysql://10.0.0.35:3306/mission?characterEncoding=UTF-8
     username: user
     password: "0000"
   jpa:
