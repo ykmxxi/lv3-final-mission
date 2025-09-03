@@ -13,6 +13,9 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ActiveProfiles;
 
+import org.springframework.boot.test.mock.mockito.MockBean;
+
+import finalmission.meetingroom.service.SendGridEmailService;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
@@ -20,6 +23,9 @@ import io.restassured.http.ContentType;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 class ReservationControllerTest {
+
+    @MockBean
+    private SendGridEmailService sendGridEmailService;
 
     @DisplayName("회의실 예약 생성 요청을 보낸다.")
     @Test

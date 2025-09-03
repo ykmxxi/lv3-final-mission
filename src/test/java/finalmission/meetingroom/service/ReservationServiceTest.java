@@ -159,7 +159,7 @@ class ReservationServiceTest {
         reservationService.reserveMeetingRoom(request, loginMember);
 
         ReservationCreateRequest overlapsRequest = new ReservationCreateRequest(
-                "임팩트룸", nextDate(), getTime("11:00"), getTime("12:00")
+                "임팩트룸", nextDate(), getTime("10:59"), getTime("12:00")
         );
 
         // when & then

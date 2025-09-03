@@ -102,10 +102,9 @@ public class ReservationService {
             final LocalTime startAt,
             final LocalTime endAt
     ) {
-        return !reservationRepository.existsByMeetingRoomAndReservationDateAndStartAtBetween(
-                meetingRoom, reservationDate, startAt, endAt) &&
-               reservationRepository.existsByMeetingRoomAndReservationDateAndEndAtBetween(
-                       meetingRoom, reservationDate, startAt, endAt);
+        return reservationRepository.findByMeetingRoomIdAndReservationDate(meetingRoom.getId(), reservationDate)
+                .stream()
+                .anyMatch(reservation -> reservation.getStartAt().isBefore(endAt) && reservation.getEndAt().isAfter(startAt));
     }
 
     private boolean isEndAtBeforeStartAt(final LocalTime startAt, final LocalTime endAt) {
